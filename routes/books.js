@@ -10,7 +10,7 @@ const router = express.Router();
 // get user lists
 router.get('/list', function(req, res) {
   let sql = `SELECT * FROM BOOKS WHERE price > 20;`;
-  db.query(sql, function(err, data, fields) {
+  db.query(sql, (err, data, fields) => {
     if (err) throw err;
     res.json({
       status: 200,
@@ -38,7 +38,7 @@ router.get('/list', function(req, res) {
 
 
 // INSERT INTO books (id, title, author, price, qty) VALUES (2001, 'queen of jungle', 'drcrazy', 200, 20);
-router.post('/new', function(req, res) {
+router.post('/new', (req, res) => {
   let sql = `INSERT INTO books (id, title, author, price, qty) VALUES (?)`;
   let values = [
     req.body.id,
@@ -47,7 +47,7 @@ router.post('/new', function(req, res) {
     req.body.price,
     req.body.qty
   ];
-  db.query(sql, [values], function(err, data, fields) {
+  db.query(sql, [values], (err, data, fields) => {
     if (err) throw err;
     res.json({
       status: 200,
@@ -71,7 +71,7 @@ router.get('/test', (req, res) => {
 
 
 // get user lists
-router.get('/list', function(req, res) {
+router.get('/list', (req, res) => {
   let sql = `SELECT * FROM BOOKS WHERE price > 20;`;
   let content = '';
   db.query(sql, function(err, data, fields) {

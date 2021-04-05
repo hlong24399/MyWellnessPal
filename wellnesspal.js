@@ -7,15 +7,14 @@ const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 12345
 const mysql = require('mysql');
+app.use(cors());
 
 // Used for PUT, POST method, help to send request as Json or String, array when needed
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-
-app.use(cors());
+//Helper object
 var server = {port: port};
-
 
 
 db = mysql.createConnection({
@@ -29,10 +28,14 @@ db = mysql.createConnection({
 
 app.use(express.static('public'));                                          
 
-//Acquire books route.
+//Acquire books route. ( testing purposes )
 const bookRouter = require('./routes/books');
 app.use('/books', bookRouter);
 
+//Acquire sign-in, sign-up route.
+const flowRouter = require('./routes/flows')
+app.use('/flows', flowRouter);
+
 app.listen(server.port, () => {
-    console.log('Server is running on localhost:12345')
+    console.log('Server is running on localhost:' + server.port)
 });
