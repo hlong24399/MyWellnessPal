@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 
-
 // Setup Mysql
 const cors = require('cors');
 const port = process.env.PORT || 12345
@@ -26,14 +25,16 @@ db = mysql.createConnection({
 })  
 
 
-app.use(express.static('public'));                                          
+app.use(express.static('public'));
+
 
 //Acquire books route. ( testing purposes )
 const bookRouter = require('./routes/books');
 app.use('/books', bookRouter);
 
+
 //Acquire sign-in, sign-up route.
-const flowRouter = require('./routes/flows')
+const flowRouter = require('./routes/flows');
 app.use('/flows', flowRouter);
 
 app.listen(server.port, () => {

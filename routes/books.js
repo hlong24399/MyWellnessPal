@@ -4,12 +4,12 @@
 
 const express = require('express');
 const router = express.Router();
-
+var ID = 1;
 
 
 // get user lists
 router.get('/list', function(req, res) {
-  let sql = `SELECT * FROM BOOKS WHERE price > 20;`;
+  var sql = "SELECT * FROM userInfo;"
   db.query(sql, (err, data, fields) => {
     if (err) throw err;
     res.json({
@@ -20,32 +20,13 @@ router.get('/list', function(req, res) {
   })
 });
 
-// create new user
-// router.post('/new', function(req, res) {
-//   let sql = `INSERT INTO users(name, gender) VALUES (?)`;
-//   let values = [
-//     req.body.name,
-//     req.body.gender
-//   ];
-//   db.query(sql, [values], function(err, data, fields) {
-//     if (err) throw err;
-//     res.json({
-//       status: 200,
-//       message: "New user added successfully"
-//     })
-//   })
-// });
-
-
 // INSERT INTO books (id, title, author, price, qty) VALUES (2001, 'queen of jungle', 'drcrazy', 200, 20);
 router.post('/new', (req, res) => {
-  let sql = `INSERT INTO books (id, title, author, price, qty) VALUES (?)`;
+  let sql = `INSERT INTO userInfo (id, username, email) VALUES (?);`;
   let values = [
-    req.body.id,
-    req.body.title,
-    req.body.author,
-    req.body.price,
-    req.body.qty
+    ID=ID+1,
+    req.body.username,
+    req.body.email
   ];
   db.query(sql, [values], (err, data, fields) => {
     if (err) throw err;
@@ -56,11 +37,6 @@ router.post('/new', (req, res) => {
   })
 });
 
-/*
-Params = @{id = 2001, title = 'queenofjungle', author = 'drcrazy', price = 200, qty = 20};
-*/
-
-
 
 
 // testing point
@@ -68,21 +44,6 @@ router.get('/test', (req, res) => {
   res.type('text/plain')
   res.send('hello there, this is Computer.')
 })
-
-
-// get user lists
-router.get('/list', (req, res) => {
-  let sql = `SELECT * FROM BOOKS WHERE price > 20;`;
-  let content = '';
-  db.query(sql, function(err, data, fields) {
-    if (err) throw err;
-    res.json({
-      status: 200,
-      message: "BOOKS lists retrieved successfully",
-      data
-    })
-  })
-});
 
 // custom 404 page
 router.use((req, res) => {
