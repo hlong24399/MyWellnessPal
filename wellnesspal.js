@@ -20,23 +20,16 @@ db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '2439',
-    password: '2439',
     database: 'testing_db'
-})  
+})
 
 
 app.use(express.static('public'));
-
-
-//Acquire books route. ( testing purposes )
-const bookRouter = require('./routes/books');
-app.use('/books', bookRouter);
-
 
 //Acquire sign-in, sign-up route.
 const flowRouter = require('./routes/flows');
 app.use('/flows', flowRouter);
 
 app.listen(server.port, () => {
-    console.log('Server is running on localhost:' + server.port)
+    console.log('Server is running on localhost:' + server.port + '/flows/precheck')
 });
