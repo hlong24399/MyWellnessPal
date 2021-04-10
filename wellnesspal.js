@@ -24,12 +24,12 @@ db = mysql.createConnection({
 })
 
 
-app.use(express.static('public'));
+app.use('/home', express.static('public'));
 
 //Acquire sign-in, sign-up route.
 const flowRouter = require('./routes/flows');
-app.use('/flows', flowRouter);
+app.use('/', flowRouter);
 
 app.listen(server.port, () => {
-    console.log('Server is running on localhost:' + server.port + '/flows/precheck')
+    console.log('Server is running on localhost:' + server.port)
 });

@@ -12,12 +12,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
     <meta charset="utf-8">
     <title>WellNessPal</title>
   </head>
   <body>
-
     <div class="switch"> Dark Mode:
       <span class="inner-switch">OFF</span>
     </div>
@@ -38,50 +36,12 @@
 
       <!-- <div class="press">
         <img src="images//press2.png" alt="">
-      </div> -->
-      <div class="container-fluid">
-        <div class="container">
-           <p class="text-center">
-          </p>
-           <hr>
-          <div class="row">
-            <div class="col-md-3">
-              <form role="form" method="post" action = '/flows/new'>
-                <fieldset>							
-                  <p class="text-uppercase pull-center"> SIGN UP.</p>	
-                   <div class="form-group">
-                    <input type="text" name="username" id="username" class="form-control input-lg" placeholder="username" value="hlong">
-                  </div>
-                  <div class="form-group">
-                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" value="hlong@gmail.com">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" value="12345r">
-                  </div>
-                    <div class="form-group">
-                    <input type="password" name="password2" id="password2" class="form-control input-lg" placeholder="Password2" value="12345r">
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input">
-                      By Clicking register you're agree to our policy & terms
-                    </label>
-                    </div>
-                   <div>
-                        <input type="submit" class="btn btn-md btn-secondary"   value="Register">
-                   </div>
-                </fieldset>
-              </form>
-            </div>
-            
-            <div class="col-md-2">
-            </div>
-            
-            <div class="col-md-3">
-                  <form role="form">
+      </div> --> 
+        <div class="col-md">
+              <form role="form">
                 <fieldset>							
                   <p class="text-uppercase"> Login using your account: </p>	
-                     
+                      
                   <div class="form-group">
                     <input type="email" name="username" id="username" class="form-control input-lg" placeholder="username">
                   </div>
@@ -91,9 +51,12 @@
                   <div>
                     <input type="submit" class="btn btn-md btn-secondary" value="Sign In">
                   </div>
-                     
-                 </fieldset>
-            </form>	
+                  <div>
+                    <p>Not a member yet?</p>
+                    <a href="register.html">Sign Up!</a>
+                  </div>
+                </fieldset>
+              </form>	
             </div>
           </div>
         </div>
