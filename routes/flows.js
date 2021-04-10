@@ -24,9 +24,14 @@ router.get('/precheck', (req, res) => {
   //Create table 
 router.get('/init_db', (req, res) => {
   let sql = `CREATE TABLE userInfo 
-  ( id INT PRIMARY KEY, username VARCHAR(30) NOT NULL, 
+  (id INT PRIMARY KEY, username VARCHAR(30) NOT NULL, 
   email VARCHAR(30) NOT NULL, 
-  password VARCHAR(30) NOT NULL);`
+  password VARCHAR(30) NOT NULL,
+  height DOUBLE NOT NULL,
+  weight DOUBLE NOT NULL,
+  age INT NOT NULL,
+  gender VARCHAR(20) NOT NULL
+  );`
   db.query(sql, (err, data, fields) => {
     if (err) throw err;
     res.redirect('/home')
@@ -50,12 +55,16 @@ router.get('/list', (req, res) => {
 var ID = 0;
 router.post('/new', (req, res) => {
   console.log('in /new')
-  let sql = `INSERT INTO userInfo (id, username, email, password) VALUES (?);`;
+  let sql = `INSERT INTO userInfo (id, username, email, password, height, weight, age, gender) VALUES (?);`;
   let values = [
     ID=ID+1,
     req.body.username,
     req.body.email,
-    req.body.password
+    req.body.password,
+    req.body.height,
+    req.body.weight,
+    req.body.age,
+    req.body.gender
   ];
   db.query(sql, [values], (err, data, fields) => {
     if (err) throw err;
