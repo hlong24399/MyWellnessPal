@@ -17,10 +17,10 @@ var server = {port: port};
 
 
 db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '2439',
-    database: 'testing_db'
+    host: 'sql3.freemysqlhosting.net',
+    user: 'sql3404863',
+    password: '3WC678VlnH',
+    database: 'sql3404863'
 })
 
 

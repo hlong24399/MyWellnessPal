@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 
@@ -10,11 +9,10 @@ router.get('/', (req, res) => {
 })
 
 
-
 //Make sure table is empty when server launches
 router.get('/precheck', (req, res) => {
   console.log('in precheck')
-  let sql = "DROP TABLE IF EXISTS userInfo;"
+  let sql = "DROP TABLE IF EXISTS userInfo;";
   db.query(sql, (err, data, fields) => {
     if (err) throw err;
     res.redirect('/init_db');
@@ -38,18 +36,24 @@ router.get('/init_db', (req, res) => {
   })
 })
   
-  //Show 'userInfo' table
+/*
+`data` is list of javascript object, data[0]["email"] to get email value of the first record
+*/
+//Show user info
 router.get('/list', (req, res) => {
-    res.type('text/plain')
-    let sql = `SELECT * FROM userInfo;`;
-    db.query(sql, (err, data, fields) => {
+  res.type('text/plain')
+  let sql = `SELECT * FROM userInfo;`;
+  db.query(sql, (err, data, fields) => {
     if (err) throw err;
-    res.json({status: 200,
-      message: "User information retrieved.",
-      data
-      });
+    var final_data = [];
+    for (var i = 0; i < data.length; i++)
+    {
+      final_data.push(data[0].email);
+    }
+    // res.json(final_data);
+    res.json(data);
   })
-})
+});
   
 //Sign-up
 var ID = 0;
@@ -71,6 +75,7 @@ router.post('/new', (req, res) => {
     res.redirect('/home');
   })
 })
+
 
 
 module.exports = router;
